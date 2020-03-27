@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 -- Database: `dbbanche`
 --
 
+CREATE DATABASE IF NOT EXISTS `4b_banche` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `4b_banche`;
+
 -- --------------------------------------------------------
 
 --
