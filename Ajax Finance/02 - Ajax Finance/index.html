@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>01 - Ajax Finance</title>
+		<title>02 - Ajax Finance</title>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
@@ -19,9 +19,8 @@
 					<option value="MSFT">Microsoft Corporation</option>
 					<option value="BA">The Boeing Company</option>
 				</select>
-				<form class="form-inline" style="margin-left: 68%;">
-				  <input class="form-control mr-sm-2" type="text" id="search" placeholder="Search">
-				  <button class="btn btn-success">Search</button>
+				<form class="form-inline" style="margin-left: 73%;">
+					<input class="form-control mr-sm-2" type="text" id="search" placeholder="Search">
 				</form>
 			</nav>
 			<div class="row">
@@ -29,7 +28,7 @@
 				<div class="col-sm-8" style="padding:0px;">
 					<br>
 					<div id="quote">
-						<table class="table table-bordered table-striped">
+						<table class="table table-bordered table-striped" id="table">
 							<style>
 								th{ height: 60px; width:50px }
 								td{ height: 30px; width:50px }
@@ -45,18 +44,10 @@
 								<th>Day's High</th>
 								<th>Volume</th>
 							</tr>
-							<tr>
-								<td id="symbol"></td>
-								<td id="lastTrade"></td>
-								<td id="lastTradeTime"></td>
-								<td id="change"></td>
-								<td id="open"></td>
-								<td id="previousClose"></td>
-								<td id="daysLow"></td>
-								<td id="daysHigh"></td>
-								<td id="volume"></td>
-							</tr>
 						</table>
+						<div>
+							Since the key on which this page runs is free, we are not allowed to make more than 5 calls per minute or 500 calls per day.
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-2"></div>
