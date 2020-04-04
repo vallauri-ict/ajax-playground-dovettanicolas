@@ -1,4 +1,4 @@
-# 01 - Ajax Finance
+# 02 - Ajax Finance
 ## Dovetta Nicolas, 4^B Informatica - I.I.S. "G. Vallauri" Fossano
 
 Using the API GLOBAL_QUOTE by [Alpha Vantage](https://www.alphavantage.co/documentation/#latestprice) we are able to take some data of some comanies and we put it in the table.
@@ -7,7 +7,7 @@ Alpha Vantage gave you the opportunity to get your [free key](https://www.alphav
 ### Code explenation
 **Based on previous exercise**
 By this function when you have more than one letter written down in the tag ```html <intup type="text">``` this function search
-all the companies with a symbol that is nearly the same symbol, than it call the [previous exercise]() function and fill the table row.
+all the companies with a symbol that is nearly the same symbol, than it call the [previous exercise](https://github.com/vallauri-ict/ajax-playground-dovettanicolas/tree/develop/Ajax%20Finance/01%20-%20Ajax%20Finance) function and fill the table row.
 ```javascript
 function getGlobalSymbol(keywords) {
         console.log(keywords);
