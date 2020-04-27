@@ -7,10 +7,43 @@ $(document).ready(function () {
     let slctSymbol=$("#slctSymbol");
     slctSymbol.prop("selectedIndex","-1");
 
-    //Creazione chart
-    var ctx = document.getElementById('myChart').getContext('2d');
-    $.getJSON("http://localhost:3000/chart", function(data){
-        var myChart = new Chart(ctx,data);
+    $.getJSON("http://localhost:3000/sector", function(data)
+    {
+        for(let key in data)
+        {
+            if(key != "Meta Data")
+            {
+                $("<option>", {
+                    text: key,
+                    value: key,
+                }).appendTo($("#slctSector"));
+            }
+        }
+        $("#slctSector").prop("selectedIndex",-1);
+    });
+
+    $("#slctSector").on("change", function(){
+        let c=this.value;
+        let i;
+        //Creazione chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        $.getJSON("http://localhost:3000/chart", function(data){
+            console.log(c);
+            console.log(data);
+            console.log(data["data"]["datasets"][0]["data"]);
+            $.getJSON("http://localhost:3000/sector",function(data2){
+                i=0;
+                for(let key in data2[c])
+                {
+                    data["data"]["labels"][i]=key;
+                    data["data"]["datasets"][0]["data"][0][i]=data2[c][key].replace("%","");
+                    i++;
+                }
+                console.log(data["data"]);
+            });
+            var myChart = new Chart(ctx,data);
+
+        });
     });
 
     //getGlobalQuotes("IBM");
@@ -25,7 +58,6 @@ $(document).ready(function () {
 
     $("#search").on("keyup",function(){
         let str=$("#search").val();
-
         if(str.length>1)
         {
             if(beDelete)
@@ -34,14 +66,10 @@ $(document).ready(function () {
             }
             getGlobalSymbol(str);
         }
-        else
-        {
-
-        }
     });
 
-    function getGlobalQuotes(symbol,n) {
-
+    function getGlobalQuotes(symbol,n)
+    {
         let url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=VMSN8M8PZENUR7OR";//chiave gratuita VMSN8M8PZENUR7OR
         $.getJSON(url,
             function (data) {
@@ -59,8 +87,8 @@ $(document).ready(function () {
         );
     }
 
-    function getGlobalSymbol(keywords) {
-
+    function getGlobalSymbol(keywords)
+    {
         let url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + keywords + "&apikey=VMSN8M8PZENUR7OR";//chiave gratuita VMSN8M8PZENUR7OR
         $.getJSON(url,
             function (data) {
