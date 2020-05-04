@@ -3,48 +3,11 @@
 let beDelete=false;
 
 $(document).ready(function () {
-    //alert("Since the key on which this page runs is free, we are not allowed to make more than 5 calls per minute or 500 calls per day.");
+    $("#download").hide();
+    $("#upload").hide();
+
     let slctSymbol=$("#slctSymbol");
     slctSymbol.prop("selectedIndex","-1");
-
-    $.getJSON("http://localhost:3000/sector", function(data)
-    {
-        for(let key in data)
-        {
-            if(key != "Meta Data")
-            {
-                $("<option>", {
-                    text: key,
-                    value: key,
-                }).appendTo($("#slctSector"));
-            }
-        }
-        $("#slctSector").prop("selectedIndex",-1);
-    });
-
-    $("#slctSector").on("change", function(){
-        let c=this.value;
-        let i;
-        //Creazione chart
-        var ctx = document.getElementById('myChart').getContext('2d');
-        $.getJSON("http://localhost:3000/chart", function(data){
-            console.log(c);
-            console.log(data);
-            console.log(data["data"]["datasets"][0]["data"]);
-            $.getJSON("http://localhost:3000/sector",function(data2){
-                i=0;
-                for(let key in data2[c])
-                {
-                    data["data"]["labels"][i]=key;
-                    data["data"]["datasets"][0]["data"][0][i]=data2[c][key].replace("%","");
-                    i++;
-                }
-                console.log(data["data"]);
-            });
-            var myChart = new Chart(ctx,data);
-
-        });
-    });
 
     //getGlobalQuotes("IBM");
     slctSymbol.on("change",function() {
@@ -124,4 +87,50 @@ $(document).ready(function () {
         $(".toDelete").remove();
         beDelete=false;
     }
+
+    $.getJSON("http://localhost:3000/sector", function(data)
+    {
+        for(let key in data)
+        {
+            if(key != "Meta Data")
+            {
+                $("<option>", {
+                    text: key,
+                    value: key,
+                }).appendTo($("#slctSector"));
+            }
+        }
+        $("#slctSector").prop("selectedIndex",-1);
+    });
+
+    $("#slctSector").on("change", function(){
+        let c=this.value;
+        let i;
+        //Creazione chart
+        let ctx = document.getElementById('myChart').getContext('2d');
+        $.getJSON("http://localhost:3000/chart", function(data){
+            console.log(c);
+            console.log(data);
+            console.log(data["data"]["datasets"][0]["data"]);
+            $.getJSON("http://localhost:3000/sector",function(data2){
+                i=0;
+                for(let key in data2[c])
+                {
+                    data["data"]["labels"][i]=key;
+                    data["data"]["datasets"][0]["data"][i]=data2[c][key].replace("%","");
+                    i++;
+                }
+                console.log(data["data"]);
+                let myChart = new Chart(ctx,data);
+                $("#download").show();
+                $("#upload").show();
+            });
+        });
+    });
+
+    document.getElementById("download").addEventListener('click', function(){
+        let url_base64jp = document.getElementById("myChart").toDataURL("image/jpg");
+        let a =  document.getElementById("download");
+        a.href = url_base64jp;
+    });
 });
