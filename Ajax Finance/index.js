@@ -1,10 +1,18 @@
 "use strict"
 
 let beDelete=false;
+let myChart;
 
 $(document).ready(function () {
     $("#download").hide();
     $("#upload").hide();
+    $("#file").hide();
+
+    $.getJSON("http://localhost:3000/chart", function(data){
+        let ctx = document.getElementById('myChart').getContext('2d');
+        myChart = new Chart(ctx,data);
+        $("#myChart").hide();
+    });
 
     let slctSymbol=$("#slctSymbol");
     slctSymbol.prop("selectedIndex","-1");
@@ -104,10 +112,12 @@ $(document).ready(function () {
     });
 
     $("#slctSector").on("change", function(){
+        $("#myChart").show();
         let c=this.value;
         let i;
-        //Creazione chart
         let ctx = document.getElementById('myChart').getContext('2d');
+        myChart.destroy();
+        //Creazione chart
         $.getJSON("http://localhost:3000/chart", function(data){
             console.log(c);
             console.log(data);
@@ -121,16 +131,107 @@ $(document).ready(function () {
                     i++;
                 }
                 console.log(data["data"]);
-                let myChart = new Chart(ctx,data);
+                myChart = new Chart(ctx,data);
                 $("#download").show();
                 $("#upload").show();
+                $("#file").show();
             });
         });
     });
 
-    document.getElementById("download").addEventListener('click', function(){
+    $("#download").on("click", function(){
         let url_base64jp = document.getElementById("myChart").toDataURL("image/jpg");
         let a =  document.getElementById("download");
         a.href = url_base64jp;
     });
+
+    $("#upload").on("click", function(){
+        if ($("#file").val() == "")
+        {
+            alert("Devi selezionare almento un file.");
+            return;
+        }
+        if (localStorage.getItem("accessToken") === null)
+        {
+            //logIn
+            let urlParams=new URLSearchParams(window.location.search);
+            let url = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" + "http://127.0.0.1:8080"+
+            "&prompt=consent&response_type=code&client_id=" + "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com"+
+            "&scope=" + "https://www.googleapis.com/auth/drive" + "&access_type=offline";
+            let r_ = inviaRichiesta("POST", "https://www.googleapis.com/oauth2/v4/token",
+                {
+                    code: urlParams.get('code'),
+                    redirect_uri: "http://127.0.0.1:8080",
+                    client_secret: "t7UXoa-PNwRMdW1WGTE4H5iu",
+                    client_id: "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com",
+                    scope: "https://www.googleapis.com/auth/drive",
+                    grant_type: "authorization_code"
+                }, false);
+            r_.done(function (data) {
+                localStorage.setItem("accessToken", data.access_token);
+                localStorage.setItem("refreshToken", data.refreshToken);
+                localStorage.setItem("expires_in", data.expires_in);
+                window.history.pushState({}, document.title, "index.html");
+            });
+            window.location = url;
+        }
+        else {
+            let file = $("#file")[0].files[0];
+            let upload_ = new Upload(file).doUpload();
+            upload_.done(function (data){
+                alert("Caricamento effettuato con successo.");
+            }).fail(function (){
+                alert("Errore durante il caricamento. Caricamento del file interrotto, riprolete.");
+            });
+        }
+    });
+
+    let Upload = function (file) {
+        this.file = file;
+    };
+
+    Upload.prototype.getType = function () {
+        localStorage.setItem("type", this.file.type);
+        return this.file.type;
+    };
+
+    Upload.prototype.getSize = function () {
+        localStorage.setItem("size", this.file.size);
+        return this.file.size;
+    };
+
+    Upload.prototype.getName = function () {
+        return this.file.name;
+    };
+
+    Upload.prototype.doUpload = function () {
+        var that = this;
+        var formData = new FormData();
+
+        // add assoc key values, this will be posts values
+        formData.append("file", this.file, this.getName());
+        formData.append("upload_file", true);
+
+        return $.ajax({
+            type: "POST",
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", "Bearer" + " " + localStorage.getItem("accessToken"));
+
+            },
+            url: "https://www.googleapis.com/upload/drive/v2/files",
+            data: {
+                uploadType: "media"
+            },
+            xhr: function () {
+                var myXhr = $.ajaxSettings.xhr();
+                return myXhr;
+            },
+            async: true,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            timeout: 60000
+        });
+    };
 });
