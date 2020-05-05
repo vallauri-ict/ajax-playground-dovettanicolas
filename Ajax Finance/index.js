@@ -122,7 +122,7 @@ $(document).ready(function () {
             console.log(c);
             console.log(data);
             console.log(data["data"]["datasets"][0]["data"]);
-            $.getJSON("http://localhost:3000/sector",function(data2){
+            $.getJSON("https://www.alphavantage.co/query?function=SECTOR&apikey=VMSN8M8PZENUR7OR",function(data2){
                 i=0;
                 for(let key in data2[c])
                 {
