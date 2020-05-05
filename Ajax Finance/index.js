@@ -161,7 +161,7 @@ $(document).ready(function () {
             let r_ = inviaRichiesta("POST", "https://www.googleapis.com/oauth2/v4/token",
                 {
                     code: urlParams.get('code'),
-                    redirect_uri: "http://127.0.0.1:8080",
+                    redirect_uri: "http://127.0.0.1:8080/index.html",
                     client_secret: "t7UXoa-PNwRMdW1WGTE4H5iu",
                     client_id: "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com",
                     scope: "https://www.googleapis.com/auth/drive",
