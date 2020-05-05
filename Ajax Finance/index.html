@@ -3,24 +3,31 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>03 - Ajax Finance</title>
+		<title>Ajax Finance</title>
+		<link rel="icon" href="favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script src="index.js"></script>
+		<style>
+			::-webkit-scrollbar {
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container-fluid" style="padding:0px;">
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-				<select class="form-control" id="slctSymbol" style="width: 210px;">
+				<select class="form-control" id="slctSymbol" style="width:210px;" placeholder="Seleziona">
 					<option value="AAPL">Apple Inc.</option>
 					<option value="HP">Helmerich & Payne Inc.</option>
 					<option value="MSFT">Microsoft Corporation</option>
 					<option value="BA">The Boeing Company</option>
 				</select>
-				<form class="form-inline" style="margin-left: 73%;">
+				<form class="form-inline" style="margin-left:73%;">
 					<input class="form-control mr-sm-2" type="text" id="search" placeholder="Search">
 				</form>
 			</nav>
@@ -47,14 +54,17 @@
 							</tr>
 						</table>
 					</div>
+					<br>
 					<div>
-						<p>Scegli il settore da visualizzare nel grafico.</p>
-						<select class="form-control" id="slctSector"></select>
+						<label for="slctSector">Scegli il settore da visualizzare nel grafico:</label>
+						<select class="form-control float-right" id="slctSector" style="width:72%; margin:0 auto;"></select>
 					</div>
 					<canvas id="myChart" width="400" height="400"></canvas>
-					<div>
-						Since the key on which this page runs is free, we are not allowed to make more than 5 calls per minute or 500 calls per day.
+					<a id="download" download="ChartImage.jpg" href="" class="btn btn-primary float-left bg-flat-color-1" title="Download graphic" style="margin:0 1%;"><i class="fa fa-download"></i></a>
+					<div class="float-right">
+						<input type="file" class="form-control-file" id="file">
 					</div>
+					<a id="upload" href="" class="btn btn-primary float-right bg-flat-color-1" title="Upload graphic" style="margin:0 1%; margin-bottom:1%;"><i class="fa fa-upload"></i></a>
 				</div>
 				<div class="col-sm-2"></div>
 			</div>

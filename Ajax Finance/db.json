@@ -59,7 +59,11 @@
                 ]
             }]
         },
-        "options": {}
+        "options": {
+            "legend": {
+			    "display": false
+			}
+        }
     },
     "sector":{
         "Meta Data": {
