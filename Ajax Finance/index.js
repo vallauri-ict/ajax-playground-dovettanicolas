@@ -3,6 +3,25 @@
 let beDelete=false;
 let myChart;
 
+let credentials = {
+    "web": {
+        "client_id": "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com",
+        "project_id": "quickstart-1588577372839",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "t7UXoa-PNwRMdW1WGTE4H5iu",
+        "javascript_origins": ["http://localhost:8000"]
+    }
+}
+
+const clientSecret = credentials["web"]["client_secret"];
+let redirectUri = credentials["web"]["redirect_uris"][0];
+let scope = "https://www.googleapis.com/auth/drive";
+let clientId = credentials["web"]["client_id"];
+const urlParams = new URLSearchParams(window.location.search);
+const code = urlParams.get('code');
+
 $(document).ready(function () {
     $("#download").hide();
     $("#upload").hide();
@@ -146,92 +165,16 @@ $(document).ready(function () {
     });
 
     $("#upload").on("click", function(){
-        if ($("#file").val() == "")
-        {
-            alert("Devi selezionare almento un file.");
-            return;
-        }
-        if (localStorage.getItem("accessToken") === null)
-        {
-            //logIn
-            let urlParams=new URLSearchParams(window.location.search);
-            let url = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" + "http://127.0.0.1:8080"+
-            "&prompt=consent&response_type=code&client_id=" + "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com"+
-            "&scope=" + "https://www.googleapis.com/auth/drive" + "&access_type=offline";
-            let r_ = inviaRichiesta("POST", "https://www.googleapis.com/oauth2/v4/token",
-                {
-                    code: urlParams.get('code'),
-                    redirect_uri: "http://127.0.0.1:8080/index.html",
-                    client_secret: "t7UXoa-PNwRMdW1WGTE4H5iu",
-                    client_id: "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com",
-                    scope: "https://www.googleapis.com/auth/drive",
-                    grant_type: "authorization_code"
-                }, false);
-            r_.done(function (data) {
-                localStorage.setItem("accessToken", data.access_token);
-                localStorage.setItem("refreshToken", data.refreshToken);
-                localStorage.setItem("expires_in", data.expires_in);
-                window.history.pushState({}, document.title, "index.html");
-            });
-            window.location = url;
-        }
-        else {
-            let file = $("#file")[0].files[0];
-            let upload_ = new Upload(file).doUpload();
-            upload_.done(function (data){
-                alert("Caricamento effettuato con successo.");
-            }).fail(function (){
-                alert("Errore durante il caricamento. Caricamento del file interrotto, riprolete.");
-            });
-        }
+        // client id of the project
+        let clientId = "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com";
+        // redirect_uri of the project
+        let redirect_uri = "http://127.0.0.1:8080/uploadDrive/upload.html";
+        // scope of the project
+        let scope = "https://www.googleapis.com/auth/drive";
+        // the url to which the user is redirected to
+        // the actual url to which the user is redirected to
+        let url = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" + redirect_uri + "&prompt=consent&response_type=code&client_id=" + clientId + "&scope=" + scope + "&access_type=offline";
+        // this line makes the user redirected to the url
+        window.open(url);
     });
-
-    let Upload = function (file) {
-        this.file = file;
-    };
-
-    Upload.prototype.getType = function () {
-        localStorage.setItem("type", this.file.type);
-        return this.file.type;
-    };
-
-    Upload.prototype.getSize = function () {
-        localStorage.setItem("size", this.file.size);
-        return this.file.size;
-    };
-
-    Upload.prototype.getName = function () {
-        return this.file.name;
-    };
-
-    Upload.prototype.doUpload = function () {
-        var that = this;
-        var formData = new FormData();
-
-        // add assoc key values, this will be posts values
-        formData.append("file", this.file, this.getName());
-        formData.append("upload_file", true);
-
-        return $.ajax({
-            type: "POST",
-            beforeSend: function (request) {
-                request.setRequestHeader("Authorization", "Bearer" + " " + localStorage.getItem("accessToken"));
-
-            },
-            url: "https://www.googleapis.com/upload/drive/v2/files",
-            data: {
-                uploadType: "media"
-            },
-            xhr: function () {
-                var myXhr = $.ajaxSettings.xhr();
-                return myXhr;
-            },
-            async: true,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            timeout: 60000
-        });
-    };
 });
