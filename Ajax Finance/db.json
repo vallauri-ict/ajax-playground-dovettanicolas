@@ -1,26 +1,4 @@
 {
-    "companies": [
-        {
-            "id": "IBM",
-            "desc": "IBM"
-        },
-        {
-            "id": "MSFT",
-            "desc": "Microsoft Corporation SPA"
-        },
-        {
-            "id": "BABA",
-            "desc": "Alibaba China"
-        },
-        {
-            "id": "XIACF",
-            "desc": "Xiaomi Corporation"
-        },
-        {
-            "id": "SNE",
-            "desc": "Sony Corporation"
-        }
-    ],
     "chart": {
         "type": "bar",
         "data": {
