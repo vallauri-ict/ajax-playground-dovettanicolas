@@ -16,7 +16,7 @@ let credentials = {
 }
 
 const clientSecret = credentials["web"]["client_secret"];
-let redirectUri = credentials["web"]["redirect_uris"][0];
+let redirectUri = credentials["web"]["redirect_uris"];
 let scope = "https://www.googleapis.com/auth/drive";
 let clientId = credentials["web"]["client_id"];
 const urlParams = new URLSearchParams(window.location.search);
