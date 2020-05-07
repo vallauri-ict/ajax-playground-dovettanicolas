@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: 'POST',
-        url: "https://www.googleapis.com/oauth2/v4/token",
+        url: "https://www.googleapis.com/oauth2/v3/token",
         data: {
             code: code,
             redirect_uri: redirect_uri,
@@ -30,7 +30,7 @@ $(document).ready(function () {
             localStorage.setItem("accessToken", resultData.access_token);
             localStorage.setItem("refreshToken", resultData.refreshToken);
             localStorage.setItem("expires_in", resultData.expires_in);
-            window.history.pushState({}, document.title, "/GitLoginApp/" + "upload.html");
+            window.history.pushState({}, document.title, "/uploadDrive/" + "upload.html");
         }
     });
 
