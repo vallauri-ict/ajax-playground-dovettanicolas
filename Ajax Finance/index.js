@@ -3,25 +3,6 @@
 let beDelete=false;
 let myChart;
 
-let credentials = {
-    "web": {
-        "client_id": "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com",
-        "project_id": "quickstart-1588577372839",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret": "t7UXoa-PNwRMdW1WGTE4H5iu",
-        "javascript_origins": ["http://localhost:8000"]
-    }
-}
-
-const clientSecret = credentials["web"]["client_secret"];
-let redirectUri = credentials["web"]["redirect_uris"];
-let scope = "https://www.googleapis.com/auth/drive";
-let clientId = credentials["web"]["client_id"];
-const urlParams = new URLSearchParams(window.location.search);
-const code = urlParams.get('code');
-
 $(document).ready(function () {
     $("#download").hide();
     $("#upload").hide();
@@ -55,6 +36,13 @@ $(document).ready(function () {
                 deleteRows();
             }
             getGlobalSymbol(str);
+        }
+        else
+        {
+            if(beDelete)
+            {
+                deleteRows();
+            }
         }
     });
 
@@ -166,15 +154,16 @@ $(document).ready(function () {
 
     $("#upload").on("click", function(){
         // client id of the project
-        let clientId = "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com";
+        let clientId = "841441706255-6rei3amskonf6g98gmj2k21u95q30o17.apps.googleusercontent.com";
         // redirect_uri of the project
         let redirect_uri = "http://127.0.0.1:8080/uploadDrive/upload.html";
         // scope of the project
         let scope = "https://www.googleapis.com/auth/drive";
         // the url to which the user is redirected to
+        let url = "";
         // the actual url to which the user is redirected to
-        let url = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" + redirect_uri + "&prompt=consent&response_type=code&client_id=" + clientId + "&scope=" + scope + "&access_type=offline";
+        url = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" + redirect_uri + "&prompt=consent&response_type=code&client_id=" + clientId + "&scope=" + scope + "&access_type=offline";
         // this line makes the user redirected to the url
-        window.open(url);
+        window.location = url;
     });
 });
