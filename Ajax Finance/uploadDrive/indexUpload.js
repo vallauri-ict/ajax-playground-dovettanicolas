@@ -1,6 +1,6 @@
 $(document).ready(function () {
    // client id of the project
-   let clientId = "1038056986277-vut3p867fr1r339rvsphn0jfh3qe009a.apps.googleusercontent.com";
+   let clientId = "841441706255-6rei3amskonf6g98gmj2k21u95q30o17.apps.googleusercontent.com";
    // redirect_uri of the project
    let redirect_uri = "http://127.0.0.1:8080/uploadDrive/upload.html";
    // scope of the project
