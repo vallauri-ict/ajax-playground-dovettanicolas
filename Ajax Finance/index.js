@@ -2,6 +2,7 @@
 
 let beDelete=false;
 let myChart;
+let incrementale=false;
 
 $(document).ready(function () {
     $("#download").hide();
@@ -31,6 +32,7 @@ $(document).ready(function () {
         let str=$("#search").val();
         if(str.length>1)
         {
+            slctSymbol.prop("selectedIndex","-1");
             if(beDelete)
             {
                 deleteRows();
@@ -39,7 +41,7 @@ $(document).ready(function () {
         }
         else
         {
-            if(beDelete)
+            if(incrementale)
             {
                 deleteRows();
             }
@@ -67,6 +69,7 @@ $(document).ready(function () {
 
     function getGlobalSymbol(keywords)
     {
+        incrementale=true;
         let url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + keywords + "&apikey=VMSN8M8PZENUR7OR";//chiave gratuita VMSN8M8PZENUR7OR
         $.getJSON(url,
             function (data) {
