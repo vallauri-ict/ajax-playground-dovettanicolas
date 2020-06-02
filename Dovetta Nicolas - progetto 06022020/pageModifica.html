@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Aggiungi - Menù settimanale</title>
+		<link rel="icon" href="icoVallauri.png" type="image/png" />
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="common.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src="libreria.js"></script>
+		<script src="pageModifica.js"></script>
+    </head>
+    <body>
+		<!-- Navbar section -->
+		<nav class="navbar navbar-expand-sm bg-dark" id="navBar">
+			<div class="container-fluid">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Menù settimanale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">Modifica</a>
+					</li>
+					</ul>
+					<button type="button" class="btn btn-light float-right" id="logOut">Log out</button>
+			</div>
+		</nav>
+        <br>
+        <!-- Main content section -->
+		<div class="container-fluid" id="wrapper">
+			<h2 style="text-align:center;">Modifica i piatti del tuo menù</h2>
+			<br>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+                    <label for="type">Seleziona pranzo o cena:</label>
+                    <select id="type">
+                        <option value="Pranzo">Pranzo</option>
+                        <option value="Cena">Cena</option>
+                    </select>
+                    <div class="float-right" id="daysWrapper" style="display: inline-block;">
+                        <label for="days">Seleziona il giorno:</label>
+                        <select id="days">
+                        </select>
+                    </div>
+                    <hr>
+                    <form id="modifica">
+                        &nbsp;&nbsp;<label for="ant">Antipasto: </label>&nbsp;<input id="ant" type="text" placeholder="Antipasto">&nbsp;&nbsp;
+                        <label for="prm">Primo: </label>&nbsp;<input id="prm" type="text" placeholder="Primo">&nbsp;&nbsp;
+                        <label for="sec">Secondo: </label>&nbsp;<input id="sec" type="text" placeholder="Secondo">&nbsp;&nbsp;
+                        <label for="dlc">Dolce: </label>&nbsp;<input id="dlc" type="text" placeholder="Dolce">
+                    </form>
+                    <br>
+					<button type="button" class="btn btn-primary" id="aP">Annulla</button>
+					<button type="button" class="btn btn-danger" style="position:relative; left:36%;" id="delete">Rimuovi</button>
+					<button type="button" class="btn btn-success float-right" id="modif">Modifica</button>
+					<div class="alert alert-danger alert-dismissible" style="width:50%; margin:0 auto; top:2%; margin-bottom:0%;" id="alrtN">
+						<button type="button" class="close" >&times;</button>
+						<strong>Attenzione!</strong> Dati cancellati correttamente.
+                    </div>
+                    <div class="alert alert-success alert-dismissible" style="width:50%; margin:0 auto; top:2%; margin-bottom:0%;" id="alrtS">
+						<button type="button" class="close" >&times;</button>
+						Dati modifiacti correttamente.
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+		<!-- Footer section -->
+		<footer class="footer site-info" id="footer">
+			<nav class="navbar navbar-expand-sm bg-dark personalNavBar" style="position: absolute;">
+				<div class="container-fluid">
+					<div class="float-left">Mail: n.dovetta.0823@valauri.edu <br> Telephone: 3491116472</div>
+					<div class="float-right">Follow me on <a href="https://www.instagram.com/?hl=it" target="blank">Instagram</a>: 2nico02 or <a href="https://www.facebook.com/" target="blank">Facebook</a>: Nicolas Dovetta</div>
+				</div>
+			</nav>
+		</footer>
+	</body>
+</html>

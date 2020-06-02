@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Login - Menù settimanale</title>
+		<link rel="icon" href="icoVallauri.png" type="image/png" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" >
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="common.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"> </script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+		<script src="libreria.js"></script>
+		<script src="login.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid" style="margin-top:50px">
+			<!-- Jumbotron section  -->
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<div class="jumbotron text-center" data-toggle="collapse" data-target="#login">
+						<img src="logo.png" width="120" class="rounded-circle">
+						<h4 style="margin-top:10px">IIS Vallauri - Fossano</h4>
+					</div>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+			<!-- Main section  -->
+			<div class="row collapse" id="login">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<form id="form1">
+						<div class="form-group input-group">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<input type="text" class="form-control" id="mail" placeholder="Email">
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-text"><i class="fas fa-lock"></i></span>
+							<input type="password" class="form-control" id="pwd"placeholder="Password">
+						</div>
+						<div class="alert alert-danger alert-dismissible" id="lblError">
+							<button type="button" class="close" >&times;</button>
+							<strong>Attenzione!</strong> Username o Password non validi
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary form-control" id="btnLogin">LOGIN</button>
+							<button type="button" class="btn btn-link" style="height:18px;" id="sing">Registrati</button>
+							<br>
+							<button type="button" class="btn btn-link" style="height:18px;" id="remake">Hai dimenticato la password?</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+		</div>
+		<!-- Footer section -->
+		<footer class="footer site-info"  id="footer">
+			<nav class="navbar navbar-expand-sm bg-dark personalNavBar" style="position:absolute;">
+				<div class="container-fluid">
+					<div class="float-left">Mail: n.dovetta.0823@valauri.edu <br> Telephone: 3491116472</div>
+					<div class="float-right">Follow me on <a href="https://www.instagram.com/?hl=it" target="blank">Instagram</a>: 2nico02 or <a href="https://www.facebook.com/" target="blank">Facebook</a>: Nicolas Dovetta</div>
+				</div>
+			</nav>
+		</footer>
+	</body>
+</html>
