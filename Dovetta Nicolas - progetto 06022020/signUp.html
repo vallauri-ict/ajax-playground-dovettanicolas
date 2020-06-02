@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pagina di iscizione - Menù settimanale</title>
+		<link rel="icon" href="icoVallauri.png" type="image/png" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="common.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"> </script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+		<script src="libreria.js"></script>
+		<script src="signUp.js"></script>
+	</head>
+	<body>
+		<!-- Main content section -->
+		<div class="container-fluid" id="wrapper">
+			<h1 style="text-align:center; margin-top:1%;">Iscrizione</h1>
+			<br>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<h3>Anagrafica</h3>
+					<label for="nome">Nome: </label>&nbsp;<input class="form-control" id="nome" type="text" placeholder="Nome"><br>
+					<label for="cognome">Cognome: </label>&nbsp;<input class="form-control" id="cognome" type="text" placeholder="Cognome"><br>
+					<label for="mail">Mail: </label>&nbsp;<input class="form-control" id="mail" type="text" placeholder="Mail"><br>
+					<label for="pass">Password (almeno 8 caratteri): </label>&nbsp;<input class="form-control" id="pass" type="password" placeholder="Password"><br>
+					<label for="num">Numero telefonico: </label>&nbsp;<input class="form-control" id="num" type="number" style="width:16%;">
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<h3>Residenza</h3>
+					<label for="via">Via/Strada/Piazza: </label>&nbsp;<input class="form-control" id="via" type="text" placeholder="Via/Strada/Piazza"><br>
+					<label for="comu">Comune: </label>&nbsp;<input class="form-control" id="comu" type="text" placeholder="Comune"><br>
+					<label for="civ">Numero civico: </label>&nbsp;<input class="form-control" id="civ" type="number" style="width:10%; display:inline-block;"><br><br>
+					<label for="prov">Sigla provincia: </label>&nbsp;<input class="form-control" id="prov" type="text" placeholder="Provincia">
+					<br>
+					<br>
+					<button type="button" class="btn btn-danger float-left" id="deny">Annulla</button>
+					<button type="button" class="btn btn-success float-right" id="sing">Registrati</button>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+		<!-- Footer section -->
+		<footer class="footer site-info"  id="footer">
+			<nav class="navbar navbar-expand-sm bg-dark personalNavBar">
+				<div class="container-fluid">
+					<div class="float-left">Mail: n.dovetta.0823@valauri.edu <br> Telephone: 3491116472</div>
+					<div class="float-right">Follow me on <a href="https://www.instagram.com/?hl=it" target="blank">Instagram</a>: 2nico02 or <a href="https://www.facebook.com/" target="blank">Facebook</a>: Nicolas Dovetta</div>
+				</div>
+			</nav>
+		</footer>
+	</body>
+</html>

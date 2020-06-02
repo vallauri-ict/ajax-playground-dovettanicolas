@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Aggiungi - Menù settimanale</title>
+		<link rel="icon" href="icoVallauri.png" type="image/png" />
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="common.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src="libreria.js"></script>
+		<script src="pageAggiungi.js"></script>
+	</head>
+	<body>
+		<!-- Navbar section -->
+		<nav class="navbar navbar-expand-sm bg-dark" id="navBar">
+			<div class="container-fluid">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Menù settimanale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">Aggiungi</a>
+					</li>
+					</ul>
+					<button type="button" class="btn btn-light float-right" id="logOut">Log out</button>
+			</div>
+		</nav>
+		<br>
+		<!-- Main content section -->
+		<div class="container-fluid" id="wrapper">
+			<h2 style="text-align:center;">Aggiungi piatti al menù</h2>
+			<br>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<!-- Add lunch section -->
+					<h3>PRANZO</h3>
+					<table class="table table-striped table-bordered" id="tPranzo">
+						<thead>
+							<tr>
+								<th>Giorno</th>
+								<th>Antipasto</th>
+								<th>Primo</th>
+								<th>Secondo</th>
+								<th>Dolce</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Lunedì</td>
+								<td><input type="text" placeholder="-" value="" id="aLunP"></td>
+								<td><input type="text" placeholder="-" value="" id="pLunP"></td>
+								<td><input type="text" placeholder="-" value="" id="sLunP"></td>
+								<td><input type="text" placeholder="-" value="" id="dLunP"></td>
+							</tr>
+							<tr>
+								<td>Martedì</td>
+								<td><input type="text" placeholder="-" value="" id="aMarP"></td>
+								<td><input type="text" placeholder="-" value="" id="pMarP"></td>
+								<td><input type="text" placeholder="-" value="" id="sMarP"></td>
+								<td><input type="text" placeholder="-" value="" id="dMarP"></td>
+							</tr>
+							<tr>
+								<td>Mercoledì</td>
+								<td><input type="text" placeholder="-" value="" id="aMerP"></td>
+								<td><input type="text" placeholder="-" value="" id="pMerP"></td>
+								<td><input type="text" placeholder="-" value="" id="sMerP"></td>
+								<td><input type="text" placeholder="-" value="" id="dMerP"></td>
+							</tr>
+							<tr>
+								<td>Giovedì</td>
+								<td><input type="text" placeholder="-" value="" id="aGioP"></td>
+								<td><input type="text" placeholder="-" value="" id="pGioP"></td>
+								<td><input type="text" placeholder="-" value="" id="sGioP"></td>
+								<td><input type="text" placeholder="-" value="" id="dGioP"></td>
+							</tr>
+							<tr>
+								<td>Venerdì</td>
+								<td><input type="text" placeholder="-" value="" id="aVenP"></td>
+								<td><input type="text" placeholder="-" value="" id="pVenP"></td>
+								<td><input type="text" placeholder="-" value="" id="sVenP"></td>
+								<td><input type="text" placeholder="-" value="" id="dVenP"></td>
+							</tr>
+							<tr>
+								<td>Sabato</td>
+								<td><input type="text" placeholder="-" value="" id="aSabP"></td>
+								<td><input type="text" placeholder="-" value="" id="pSabP"></td>
+								<td><input type="text" placeholder="-" value="" id="sSabP"></td>
+								<td><input type="text" placeholder="-" value="" id="dSabP"></td>
+							</tr>
+							<tr>
+								<td>Domenica</td>
+								<td><input type="text" placeholder="-" value="" id="aDomP"></td>
+								<td><input type="text" placeholder="-" value="" id="pDomP"></td>
+								<td><input type="text" placeholder="-" value="" id="sDomP"></td>
+								<td><input type="text" placeholder="-" value="" id="dDomP"></td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="button" class="btn btn-danger" id="aP">Indietro</button>
+					<button type="button" class="btn btn-success float-right" id="addPranzo">Aggiungi</button>
+					<div class="alert alert-success alert-dismissible" style="width:50%; margin-left:27%; top:-7%; margin-bottom:0%;" id="alrtP">
+						<button type="button" class="close" >&times;</button>
+						Tutti i dati del pranzo sono stati caricati correttamente.
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<!-- Add dinner section -->
+					<h3>CENA</h3>
+					<table class="table table-striped table-bordered" id="tCena">
+						<thead>
+							<tr>
+								<th>Giorno</th>
+								<th>Antipasto</th>
+								<th>Primo</th>
+								<th>Secondo</th>
+								<th>Dolce</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Lunedì</td>
+								<td><input type="text" placeholder="-" value="" id="aLunC"></td>
+								<td><input type="text" placeholder="-" value="" id="pLunC"></td>
+								<td><input type="text" placeholder="-" value="" id="sLunC"></td>
+								<td><input type="text" placeholder="-" value="" id="dLunC"></td>
+							</tr>
+							<tr>
+								<td>Martedì</td>
+								<td><input type="text" placeholder="-" value="" id="aMarC"></td>
+								<td><input type="text" placeholder="-" value="" id="pMarC"></td>
+								<td><input type="text" placeholder="-" value="" id="sMarC"></td>
+								<td><input type="text" placeholder="-" value="" id="dMarC"></td>
+							</tr>
+							<tr>
+								<td>Mercoledì</td>
+								<td><input type="text" placeholder="-" value="" id="aMerC"></td>
+								<td><input type="text" placeholder="-" value="" id="pMerC"></td>
+								<td><input type="text" placeholder="-" value="" id="sMerC"></td>
+								<td><input type="text" placeholder="-" value="" id="dMerC"></td>
+							</tr>
+							<tr>
+								<td>Giovedì</td>
+								<td><input type="text" placeholder="-" value="" id="aGioC"></td>
+								<td><input type="text" placeholder="-" value="" id="pGioC"></td>
+								<td><input type="text" placeholder="-" value="" id="sGioC"></td>
+								<td><input type="text" placeholder="-" value="" id="dGioC"></td>
+							</tr>
+							<tr>
+								<td>Venerdì</td>
+								<td><input type="text" placeholder="-" value="" id="aVenC"></td>
+								<td><input type="text" placeholder="-" value="" id="pVenC"></td>
+								<td><input type="text" placeholder="-" value="" id="sVenC"></td>
+								<td><input type="text" placeholder="-" value="" id="dVenC"></td>
+							</tr>
+							<tr>
+								<td>Sabato</td>
+								<td><input type="text" placeholder="-" value="" id="aSabC"></td>
+								<td><input type="text" placeholder="-" value="" id="pSabC"></td>
+								<td><input type="text" placeholder="-" value="" id="sSabC"></td>
+								<td><input type="text" placeholder="-" value="" id="dSabC"></td>
+							</tr>
+							<tr>
+								<td>Domenica</td>
+								<td><input type="text" placeholder="-" value="" id="aDomC"></td>
+								<td><input type="text" placeholder="-" value="" id="pDomC"></td>
+								<td><input type="text" placeholder="-" value="" id="sDomC"></td>
+								<td><input type="text" placeholder="-" value="" id="dDomC"></td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="button" class="btn btn-danger" id="aC">Indietro</button>
+					<button type="button" class="btn btn-success float-right" id="addCena">Aggiungi</button>
+					<div class="alert alert-success alert-dismissible" style="width:50%; margin-left:27%; top:-7%; margin-bottom:0%;" id="alrtC">
+						<button type="button" class="close" >&times;</button>
+						Tutti i dati della cena sono stati caricati correttamente.
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+		<!-- Footer section -->
+		<footer class="footer site-info" id="footer">
+			<nav class="navbar navbar-expand-sm bg-dark personalNavBar">
+				<div class="container-fluid">
+					<div class="float-left">Mail: n.dovetta.0823@valauri.edu <br> Telephone: 3491116472</div>
+					<div class="float-right">Follow me on <a href="https://www.instagram.com/?hl=it" target="blank">Instagram</a>: 2nico02 or <a href="https://www.facebook.com/" target="blank">Facebook</a>: Nicolas Dovetta</div>
+				</div>
+			</nav>
+		</footer>
+	</body>
+</html>

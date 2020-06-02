@@ -1,0 +1,13 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
+.personalNavBar{
+    position:relative;
+    top:89%;
+    bottom:0%;
+    width:100%;
+    margin-top:2%;
+    margin-bottom:0%;
+    color:#00c6fc;
+}
