@@ -39,17 +39,38 @@ $(document).ready(function() {
 		else
 		{
 			let email=_email.val();
-			let pass=CryptoJS.MD5("password").toString();
+			let pNotMd=generateRandomString(10);
+			let pass=CryptoJS.MD5(pNotMd).toString();
 			let req=inviaRichiesta("POST","server/reimpPassword.php",{"mail":email,"password":pass});
 			req.fail(function(jqXHR, test_status, str_error) {
 				error(jqXHR, test_status, str_error);
 			});
 
 			req.done(function(data){
-				alert("La password per l'account: \""+ email +"\" è stata reimpostata a \"password\".\n Si consiglia di cambiarla al primo login.");
+				alert("La password per l'account: \""+ email +"\" è stata reimpostata a \""+pNotMd+"\".\n Si consiglia di cambiarla al primo login.");
+				/*
+				req=inviaRichiesta("POST","server/sendMail.php",{"pass":pNotMd,"mail":email});
+				req.fail(function(jqXHR, test_status, str_error) {
+					error(jqXHR, test_status, str_error);
+				});
+
+				req.done(function(data){
+					console.log(data);
+				});
+				*/
 			});
 		}
 	});
+
+	function generateRandomString(iLen) {
+		let sRnd = '';
+		let sChrs = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+		for (let i = 0; i < iLen; i++) {
+			let randomPoz = Math.floor(Math.random() * sChrs.length);
+			sRnd += sChrs.substring(randomPoz, randomPoz + 1);
+		}
+		return sRnd;
+	  }
 
 	function controllaLogin(){
         _email.removeClass("is-invalid");//Bordo rosso textbox

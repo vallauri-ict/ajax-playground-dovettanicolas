@@ -36,7 +36,7 @@ Inseriamo la mail nel campo dedicato nella pagina di logout e, premendo sul puls
 Tramite la mail "tester@authorised.this" e la password "password" ci può entrare e provare le funzionalità del sito.
 
 ## Nota importante
-__NESSUNA funzione__ di questo sito porterà a un invio di una mail qualsiasi. Le navbar sono solite funzionare ma, senza criterio, a volte si ridimensionano a piacimento loro.
+Un invio della mail è stato provato per la reimpostazione della password ma, non funzionando si è ripiegato sull'utilizzo di un alert. Le navbar sono solite funzionare ma, senza criterio, a volte si ridimensionano a piacimento loro.
 
 In caso di problemi ecco i miei contatti:
 Telefono: 3491116472
